@@ -7,9 +7,10 @@ A **Flutter** weather app is designed to provide users with accurate information
 ## Features
 
 - Display current weather conditions including temperature, humidity, wind speed, and more from Weather API.
-- User-friendly minimal interface.
+- Weather condition based app theme.
 - Automatic user location detection for accurate weather information.
 - Icons based on weather from API.
+- User-friendly minimal interface.
 - Error handling for API requests and network connectivity issues.
 
 ## Getting Started
