@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/data/network/api_services.dart';
@@ -11,26 +10,51 @@ class GlobalController extends GetxController {
   final RxDouble longitude = 0.0.obs;
   final Rx<WeatherModel?> _weatherData = Rx<WeatherModel?>(null);
 
-
   RxBool checkLoading() => _isLoading;
+
   RxDouble getLatitude() => latitude;
+
   RxDouble getLongitude() => longitude;
+
   Rx<WeatherModel?> getWeatherModel() => _weatherData;
 
   WeatherModel? weatherDataValue() => _weatherData.value;
-  String weatherDescription() => weatherDataValue()!.weather![0].description!.toUpperCase().toString();
-  String weatherIconCode() => weatherDataValue()!.weather![0].icon.toString()  ;
-  String currentTemperature() => weatherDataValue()!.main!.temp!.round().toString() ;
-  String minTemperature() => weatherDataValue()!.main!.tempMin!.round().toString();
-  String maxTemperature() => weatherDataValue()!.main!.tempMax!.round().toString();
+
+  String weatherDescription() =>
+      weatherDataValue()!.weather![0].description!.toUpperCase().toString();
+
+  String weatherIconCode() => weatherDataValue()!.weather![0].icon.toString();
+
+  String currentTemperature() =>
+      weatherDataValue()!.main!.temp!.round().toString();
+
+  String minTemperature() =>
+      weatherDataValue()!.main!.tempMin!.round().toString();
+
+  String maxTemperature() =>
+      weatherDataValue()!.main!.tempMax!.round().toString();
+
   String pressure() => '${weatherDataValue()!.main!.pressure.toString()} hPa';
+
   String humidity() => '${weatherDataValue()!.main!.humidity.toString()} %';
-  String visibility() => Utils.convertVisibility(weatherDataValue()!.visibility.toString());
-  String sunriseTime() => Utils.convertTimestampToTime(weatherDataValue()!.sys!.sunrise.toString());
-  String sunsetTime() => Utils.convertTimestampToTime(weatherDataValue()!.sys!.sunset.toString());
-  String windSpeed() => Utils.convertSpeed(weatherDataValue()!.wind!.speed.toString());
-  String windDirection() => Utils.getWindDirection(weatherDataValue()!.wind!.deg.toString());
+
+  String visibility() =>
+      Utils.convertVisibility(weatherDataValue()!.visibility.toString());
+
+  String sunriseTime() =>
+      Utils.convertTimestampToTime(weatherDataValue()!.sys!.sunrise.toString());
+
+  String sunsetTime() =>
+      Utils.convertTimestampToTime(weatherDataValue()!.sys!.sunset.toString());
+
+  String windSpeed() =>
+      Utils.convertSpeed(weatherDataValue()!.wind!.speed.toString());
+
+  String windDirection() =>
+      Utils.getWindDirection(weatherDataValue()!.wind!.deg.toString());
+
   String feelsLike() => weatherDataValue()!.main!.feelsLike!.round().toString();
+
   String dtValue() => Utils.convertDtToTime(weatherDataValue()!.dt.toString());
 
   @override
@@ -43,10 +67,14 @@ class GlobalController extends GetxController {
 
   Future<void> getLocationAndFetchWeather() async {
     try {
+      _isLoading.value = true;
+
       await getLocation();
       await getWeather();
     } catch (e) {
       print('Error: $e');
+    } finally {
+      _isLoading.value = false;
     }
   }
 
@@ -61,7 +89,9 @@ class GlobalController extends GetxController {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          Get.snackbar('Location', 'Location permissions are denied',
+          Get.snackbar(
+            'Location',
+            'Location permissions are denied',
             snackPosition: SnackPosition.BOTTOM,
           );
           return Future.error('Location permissions are denied');
@@ -73,13 +103,12 @@ class GlobalController extends GetxController {
             'Location permissions are permanently denied, we cannot request permissions.');
       }
 
-      return await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.best).then((value) {
-        latitude.value = value.latitude;
-        longitude.value = value.longitude;
-        _isLoading.value = false;
-      });
-    } catch (e){
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best,
+      );
+      latitude.value = position.latitude;
+      longitude.value = position.longitude;
+    } catch (e) {
       print('Error getting location: $e');
     }
   }
@@ -94,9 +123,6 @@ class GlobalController extends GetxController {
       _weatherData.value = WeatherModel.fromJson(weatherData);
     } catch (e) {
       print('Error fetching weather data: $e');
-    } finally {
-      _isLoading.value = false;
     }
   }
 }
-
