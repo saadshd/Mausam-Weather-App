@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-
-//colors
-// const defaultAppColor = Color(0xFF9E9E9E);
-const defaultAppColor = Colors.blue;
-// const lightTextColor = Color(0xFF616161);
-const lightTextColor = Color(0xFFBDBDBD);
+import 'package:weather_app/res/app_color.dart';
 
 //text styles
 const largeTextStyle = TextStyle(
@@ -16,18 +11,18 @@ const mediumTextStyle = TextStyle(
 );
 
 const headingTextStyle = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.bold
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
 );
 
 const titleTextStyle = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.bold
+  fontWeight: FontWeight.bold,
 );
 
 const lightTitleTextStyle = TextStyle(
   fontSize: 14,
-  color: lightTextColor,
+  color: AppColor.lightTextColor,
 );
 
 const bodyTextStyle = TextStyle(
@@ -36,11 +31,5 @@ const bodyTextStyle = TextStyle(
 
 const lightBodyTextStyle = TextStyle(
   fontSize: 12,
-  color: lightTextColor,
+  color: AppColor.lightTextColor,
 );
-
-
-
-
-
-

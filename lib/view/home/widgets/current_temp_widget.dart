@@ -12,29 +12,37 @@ class CurrentTempWidget extends StatelessWidget {
 
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * .6,
-      child: Obx(() => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('assets/weather/${globalController.weatherIconCode()}.png'),
-          const SizedBox(height: 20,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(globalController.currentTemperature(),
-                style: largeTextStyle,
-              ),
-              Text('°C',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-            ],
-          ),
-          Text(globalController.weatherDescription(),
-            style: titleTextStyle,
-          ),
-        ],
-      ),),
+      child: Obx(
+        () => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/weather/${globalController.weatherIconCode()}.png',
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  globalController.currentTemperature(),
+                  style: largeTextStyle,
+                ),
+                Text(
+                  '°C',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+              ],
+            ),
+            Text(
+              globalController.weatherDescription(),
+              style: titleTextStyle,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-

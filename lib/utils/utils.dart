@@ -1,9 +1,7 @@
-
-
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 
 class Utils {
-
   static String date = DateFormat('yMMMMd').format(DateTime.now());
 
   static String convertVisibility(String visibilityMeters) {
@@ -41,7 +39,8 @@ class Utils {
   static String convertTimestampToTime(String timestamp) {
     int timestampInt = int.tryParse(timestamp) ?? 0;
 
-    final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestampInt * 1000);
+    final DateTime dateTime =
+        DateTime.fromMillisecondsSinceEpoch(timestampInt * 1000);
     final String formattedTime = DateFormat('h:mm a').format(dateTime);
     return formattedTime;
   }
@@ -54,5 +53,90 @@ class Utils {
     return formattedTime;
   }
 
-  }
+  static LinearGradient getBackgroundGradient(String weatherMain) {
+    LinearGradient linearGradient;
 
+    switch (weatherMain.toLowerCase()) {
+      case 'clear':
+      case 'snow':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.indigo,
+            Colors.lightBlueAccent
+          ],
+        );
+        break;
+      case 'smoke':
+      case 'haze':
+      case 'squall':
+      case 'tornado':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.blueGrey,
+            Colors.lightBlueAccent,
+          ],
+        );
+        break;
+      case 'dust':
+      case 'sand':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.brown,
+            Colors.grey,
+          ],
+        );
+        break;
+      case 'fog':
+      case 'mist':
+      case 'ash':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.white,
+            Colors.lightBlueAccent
+          ],
+        );
+        break;
+      case 'clouds':
+      case 'thunderstorm':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.blueGrey,
+            Colors.grey
+          ],
+        );
+        break;
+      case 'rain':
+      case 'drizzle':
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.indigo,
+            Colors.blue
+          ],
+        );
+        break;
+      default:
+        linearGradient = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.grey,
+            Colors.white
+          ],
+        );
+    }
+
+    return linearGradient;
+  }
+}

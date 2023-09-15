@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/utils/constants.dart';
+import 'package:weather_app/res/app_color.dart';
 import 'package:weather_app/view/home/home_screen.dart';
-
-
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Mausam',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: defaultAppColor,
-            brightness: Brightness.dark,
+          seedColor: AppColor.defaultAppColor,
         ),
         useMaterial3: true,
         fontFamily: 'Lato',
@@ -29,4 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

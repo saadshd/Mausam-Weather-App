@@ -3,6 +3,7 @@ import 'package:weather_app/utils/constants.dart';
 
 class InfoRow extends StatelessWidget {
   final String label, value;
+
   const InfoRow({super.key, required this.label, required this.value});
 
   @override
@@ -12,17 +13,21 @@ class InfoRow extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label,
+            Text(
+              label,
               style: lightTitleTextStyle,
             ),
-            Text(value,
+            Text(
+              value,
               style: titleTextStyle,
             ),
           ],
         ),
         const Padding(
           padding: EdgeInsets.only(bottom: 5),
-          child: Divider(height: 10,),
+          child: Divider(
+            height: 10,
+          ),
         ),
       ],
     );

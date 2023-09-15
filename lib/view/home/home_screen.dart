@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/view/home/widgets/appbar_widget.dart';
 import 'package:weather_app/view/home/widgets/current_temp_widget.dart';
 import 'package:weather_app/view/home/widgets/footer_widget.dart';
@@ -26,27 +27,32 @@ class _HomeScreenState extends State<HomeScreen> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: RefreshIndicator.adaptive(
-        onRefresh: _refreshData,
-        child: Obx(() => globalController.checkLoading().isTrue
-            ? const Center(
-                child: CircularProgressIndicator(),
-            )
-            : Padding(
-              padding: const EdgeInsets.all(10.0),
-                child: ListView(
-                  children: const [
-                    AppbarWidget(),
-                    CurrentTempWidget(),
-                    InfoWidget(),
-                    FooterWidget(),
-                  ],
-                ),
-            ),
-            ),
-      ),
+          onRefresh: _refreshData,
+          child: Obx(
+            () => globalController.checkLoading().isTrue
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Container(
+                    decoration: BoxDecoration(
+                      gradient:
+                          Utils.getBackgroundGradient(globalController.weatherMain),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ListView(
+                        children: const [
+                          AppbarWidget(),
+                          CurrentTempWidget(),
+                          InfoWidget(),
+                          FooterWidget(),
+                        ],
+                      ),
+                    ),
+                  ),
+          ),
+        ),
       ),
     );
   }
 }
-
-

@@ -6,18 +6,22 @@ import 'package:weather_app/data/network/base_api_services.dart';
 import 'package:weather_app/res/app_url/app_url.dart';
 
 class ApiServices extends BaseApiServices {
-
   @override
   Future getWeatherApi(lan, lon) async {
     var jsonData;
     try {
-      var response = await http.get(Uri.parse(weatherAppUrl(lan, lon))).timeout(
-          const Duration(seconds: 20));
+      var response = await http
+          .get(Uri.parse(weatherAppUrl(lan, lon)))
+          .timeout(const Duration(seconds: 20));
       jsonData = jsonResponse(response);
     } on SocketException {
-      throw InternetException('No Internet');
+      throw InternetException(
+        'No Internet',
+      );
     } on RequestTimeOut {
-      throw RequestTimeOut('Request Timeout');
+      throw RequestTimeOut(
+        'Request Timeout',
+      );
     }
     return jsonData;
   }
@@ -32,7 +36,8 @@ class ApiServices extends BaseApiServices {
         return jsonResponse;
       default:
         throw FetchDataException(
-            'Error while Communication ${response.statusCode}');
+          'Error while Communication ${response.statusCode}',
+        );
     }
   }
 }

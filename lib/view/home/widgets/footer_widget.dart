@@ -14,14 +14,16 @@ class FooterWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text('OpenWeather',
+        children: [
+          const Text(
+            'OpenWeather',
             style: lightBodyTextStyle,
-            ),
-            Text('Last updated ${globalController.dtValue()}',
-              style: lightBodyTextStyle,
-            ),
-          ],
+          ),
+          Text(
+            'Last updated ${globalController.dtValue()}',
+            style: lightBodyTextStyle,
+          ),
+        ],
       ),
     );
   }

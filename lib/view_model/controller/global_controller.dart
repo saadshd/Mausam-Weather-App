@@ -9,6 +9,7 @@ class GlobalController extends GetxController {
   final RxDouble latitude = 0.0.obs;
   final RxDouble longitude = 0.0.obs;
   final Rx<WeatherModel?> _weatherData = Rx<WeatherModel?>(null);
+  final RxString _weatherMain = ''.obs;
 
   RxBool checkLoading() => _isLoading;
 
@@ -19,6 +20,12 @@ class GlobalController extends GetxController {
   Rx<WeatherModel?> getWeatherModel() => _weatherData;
 
   WeatherModel? weatherDataValue() => _weatherData.value;
+
+  String get weatherMain => _weatherMain.value;
+
+  void setWeatherMain(String value) {
+    _weatherMain.value = value;
+  }
 
   String weatherDescription() =>
       weatherDataValue()!.weather![0].description!.toUpperCase().toString();
@@ -67,7 +74,6 @@ class GlobalController extends GetxController {
 
   Future<void> getLocationAndFetchWeather() async {
     try {
-      _isLoading.value = true;
 
       await getLocation();
       await getWeather();
@@ -120,7 +126,10 @@ class GlobalController extends GetxController {
         longitude.value,
       );
 
-      _weatherData.value = WeatherModel.fromJson(weatherData);
+      final weatherModel = WeatherModel.fromJson(weatherData);
+      setWeatherMain(weatherModel.weather![0].main!.toString());
+
+      _weatherData.value = weatherModel;
     } catch (e) {
       print('Error fetching weather data: $e');
     }

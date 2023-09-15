@@ -5,7 +5,6 @@ import 'package:weather_app/utils/constants.dart';
 import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/view_model/controller/global_controller.dart';
 
-
 class AppbarWidget extends StatefulWidget {
   const AppbarWidget({super.key});
 
@@ -14,17 +13,14 @@ class AppbarWidget extends StatefulWidget {
 }
 
 class _AppbarWidgetState extends State<AppbarWidget> {
-
   String city = '';
-  final GlobalController globalController = Get.put(GlobalController(), permanent: true);
-
+  final GlobalController globalController =
+      Get.put(GlobalController(), permanent: true);
 
   @override
   void initState() {
-    getAddress(
-      globalController.getLatitude().value,
-      globalController.getLongitude().value
-    );
+    getAddress(globalController.getLatitude().value,
+        globalController.getLongitude().value);
     super.initState();
   }
 
@@ -38,24 +34,19 @@ class _AppbarWidgetState extends State<AppbarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-          child: Column(
-            children: [
-              Text(city,
-              style: mediumTextStyle
-              ),
-              Text(Utils.date,
-                style: lightTitleTextStyle,
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(city, style: mediumTextStyle),
+          Text(
+            Utils.date,
+            style: lightTitleTextStyle,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
