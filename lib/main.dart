@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: AppColor.defaultAppColor,
+          brightness: Brightness.dark
         ),
         useMaterial3: true,
         fontFamily: 'Lato',

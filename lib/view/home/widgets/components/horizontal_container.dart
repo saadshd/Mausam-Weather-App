@@ -17,7 +17,7 @@ class HorizontalContainer extends StatelessWidget {
     return FrostedContainer(
       height: 65,
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

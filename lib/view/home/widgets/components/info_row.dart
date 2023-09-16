@@ -27,6 +27,7 @@ class InfoRow extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 5),
           child: Divider(
             height: 10,
+            color: Colors.white70,
           ),
         ),
       ],

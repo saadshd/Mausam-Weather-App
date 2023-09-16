@@ -63,8 +63,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.indigo,
-            Colors.lightBlueAccent
+            Colors.lightBlue,
+            Colors.indigoAccent,
           ],
         );
         break;
@@ -76,8 +76,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
+            Colors.lightBlue,
             Colors.blueGrey,
-            Colors.lightBlueAccent,
           ],
         );
         break;
@@ -87,8 +87,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.brown,
             Colors.grey,
+            Colors.brown,
           ],
         );
         break;
@@ -99,8 +99,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.white,
-            Colors.lightBlueAccent
+            Colors.lightBlue,
+            Colors.white70
           ],
         );
         break;
@@ -110,8 +110,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
+            Colors.grey,
             Colors.blueGrey,
-            Colors.grey
           ],
         );
         break;
@@ -121,8 +121,8 @@ class Utils {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
+            Colors.blue,
             Colors.indigo,
-            Colors.blue
           ],
         );
         break;
@@ -132,7 +132,7 @@ class Utils {
           end: Alignment.bottomCenter,
           colors: [
             Colors.grey,
-            Colors.white
+            Colors.white70
           ],
         );
     }
