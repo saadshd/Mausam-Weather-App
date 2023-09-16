@@ -25,32 +25,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: RefreshIndicator.adaptive(
-          onRefresh: _refreshData,
-          child: Obx(
-            () => globalController.checkLoading().isTrue
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                      gradient:
-                          Utils.getBackgroundGradient(globalController.weatherMain),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: ListView(
-                        children: const [
-                          AppbarWidget(),
-                          CurrentTempWidget(),
-                          InfoWidget(),
-                          FooterWidget(),
-                        ],
-                      ),
+      body: RefreshIndicator.adaptive(
+        onRefresh: _refreshData,
+        child: Obx(
+          () => globalController.checkLoading().isTrue
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Container(
+                  decoration: BoxDecoration(
+                    gradient:
+                        Utils.getBackgroundGradient(globalController.weatherMain),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ListView(
+                      children: const [
+                        AppbarWidget(),
+                        CurrentTempWidget(),
+                        InfoWidget(),
+                        FooterWidget(),
+                      ],
                     ),
                   ),
-          ),
+                ),
         ),
       ),
     );
