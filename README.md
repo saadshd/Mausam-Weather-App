@@ -4,6 +4,11 @@
 
 A **Flutter** weather app is designed to provide users with accurate information using their current location to display current weather data. It uses an API to display current weather data. This app is well-managed using **MVVM** architecture and **GETX**.
 
+![Mausam Main](https://github.com/saadshd/Mausam-Weather-App/assets/101456852/177c00c9-d18b-47e1-8dc4-ead5d6af99ae)
+
+![Mausam](https://github.com/saadshd/Mausam-Weather-App/assets/101456852/1ce32ec7-23b6-4e3d-b53d-bdf7fe629c68)
+
+
 ## Features
 
 - Display current weather conditions including temperature, humidity, wind speed, and more from Weather API.
